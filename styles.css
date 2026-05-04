@@ -13,6 +13,9 @@
     background-color: #222;
     color: white;
     padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -177,6 +180,80 @@
     text-align: center;
 }
 
+/* ELEMENTOS DEL CARRITO */
+.item-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    gap: 15px;
+}
+
+.item-carrito-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 45%;
+    text-align: left;
+}
+
+.item-carrito-info img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.item-carrito-info h4 {
+    margin: 0;
+}
+
+.item-carrito-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.item-carrito-controles button {
+    padding: 5px 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.item-carrito-controles p {
+    margin: 0;
+    min-width: 20px;
+    text-align: center;
+}
+
+.item-carrito-precio {
+    margin: 0;
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.btn-eliminar {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-eliminar:hover {
+    background-color: #e60000;
+}
+
 /* FOOTER */
 .footer {
     background-color: #222;
@@ -221,4 +298,64 @@
 
 .btn-compra:hover {
     background-color: #009624;
+}
+
+/* --- RESPONSIVE / MÓVILES --- */
+@media (max-width: 600px) {
+    .header {
+        padding: 15px;
+    }
+
+    .productos {
+        padding: 20px 10px;
+    }
+
+    .grid-productos {
+        grid-template-columns: repeat(2, 1fr); /* 2 tarjetas por fila */
+        gap: 10px; /* Espacio reducido entre tarjetas */
+    }
+
+    .producto {
+        padding: 10px;
+    }
+
+    .producto img {
+        height: 120px; /* Ajustar altura de la imagen para pantallas chicas */
+    }
+
+    .acciones-producto {
+        flex-direction: column; /* Apilar control de cantidad y botón agregar */
+    }
+
+    .producto .btn-agregar {
+        width: 100%;
+    }
+
+    /* Ajustes carrito en móvil */
+    .item-carrito {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .item-carrito-info {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .item-carrito-info img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .item-carrito-precio {
+        margin: 5px 0;
+    }
+
+    .btn-eliminar {
+        width: 100%;
+        padding: 12px;
+    }
 }

@@ -99,31 +99,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         carrito.forEach((producto, index) => {
             const itemDiv = document.createElement("div");
-            // Estilos básicos aplicados desde JS para mantener intacto tu styles.css
-            itemDiv.style.display = "flex";
-            itemDiv.style.justifyContent = "space-between";
-            itemDiv.style.alignItems = "center";
-            itemDiv.style.background = "white";
-            itemDiv.style.padding = "10px 20px";
-            itemDiv.style.marginBottom = "10px";
-            itemDiv.style.borderRadius = "8px";
-            itemDiv.style.boxShadow = "0px 2px 5px rgba(0,0,0,0.1)";
+            itemDiv.classList.add("item-carrito");
 
             const subtotal = producto.precio * producto.cantidad;
             total += subtotal;
 
             itemDiv.innerHTML = `
-                <div style="display: flex; align-items: center; gap: 15px; width: 50%; text-align: left;">
-                    <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
-                    <h4 style="margin: 0;">${producto.nombre}</h4>
+                <div class="item-carrito-info">
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <h4>${producto.nombre}</h4>
                 </div>
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <button onclick="cambiarCantidad(${index}, -1)" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; background: #f9f9f9; border-radius: 4px; font-weight: bold;">-</button>
-                    <p style="margin: 0; min-width: 20px; text-align: center;">${producto.cantidad}</p>
-                    <button onclick="cambiarCantidad(${index}, 1)" style="padding: 5px 10px; cursor: pointer; border: 1px solid #ccc; background: #f9f9f9; border-radius: 4px; font-weight: bold;">+</button>
+                <div class="item-carrito-controles">
+                    <button onclick="cambiarCantidad(${index}, -1)">-</button>
+                    <p>${producto.cantidad}</p>
+                    <button onclick="cambiarCantidad(${index}, 1)">+</button>
                 </div>
-                <p style="margin: 0; font-weight: bold;">$${formatearPrecio(subtotal)}</p>
-                <button onclick="eliminarDelCarrito(${index})" style="background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">Eliminar</button>
+                <p class="item-carrito-precio">$${formatearPrecio(subtotal)}</p>
+                <button class="btn-eliminar" onclick="eliminarDelCarrito(${index})">Eliminar</button>
             `;
 
             listaCarrito.appendChild(itemDiv);
@@ -135,9 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función global para poder ser llamada desde el HTML inyectado
     window.eliminarDelCarrito = function(index) {
         let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+        const nombreProducto = carrito[index].nombre;
         carrito.splice(index, 1);
         localStorage.setItem("carrito", JSON.stringify(carrito));
         renderizarCarrito(); // Actualizar la vista automáticamente
+        mostrarNotificacion(`¡${nombreProducto} eliminado del carrito!`, "#ff4d4d");
     };
 
     // Función global para cambiar la cantidad sumando o restando
@@ -148,7 +142,9 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Si la cantidad llega a 0 (o menos), se elimina el producto del carrito
         if (carrito[index].cantidad <= 0) {
+            const nombreProducto = carrito[index].nombre;
             carrito.splice(index, 1);
+            mostrarNotificacion(`¡${nombreProducto} eliminado del carrito!`, "#ff4d4d");
         }
         
         localStorage.setItem("carrito", JSON.stringify(carrito));
