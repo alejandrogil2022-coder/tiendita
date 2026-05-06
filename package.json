@@ -1,0 +1,8 @@
+{
+  "name": "tiendita",
+  "version": "1.0.0",
+  "description": "Proyecto Tiendita con estructura modular",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}
