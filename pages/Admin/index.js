@@ -58,7 +58,7 @@ export function initAdmin() {
         tbody.innerHTML = '<tr><td colspan="4">Cargando productos...</td></tr>';
         
         try {
-            const response = await fetch('http://localhost:3000/api/productos');
+            const response = await fetch('/api/productos');
             const productos = await response.json();
             
             tbody.innerHTML = '';
@@ -85,7 +85,7 @@ export function initAdmin() {
     window.actualizarStock = async function(id) {
         const stock = document.getElementById(`stock-${id}`).value;
         try {
-            const response = await fetch(`http://localhost:3000/api/productos/${id}/stock`, {
+            const response = await fetch(`/api/productos/${id}/stock`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ stock: parseInt(stock) })
@@ -109,7 +109,7 @@ export function initAdmin() {
         tbody.innerHTML = '<tr><td colspan="5">Cargando pedidos...</td></tr>';
         
         try {
-            const response = await fetch('http://localhost:3000/api/pedidos');
+            const response = await fetch('/api/pedidos');
             const pedidos = await response.json();
             
             tbody.innerHTML = '';
@@ -143,7 +143,7 @@ export function initAdmin() {
     window.actualizarEstadoPedido = async function(id, isChecked) {
         const nuevoEstado = isChecked ? 'Enviado' : 'Pendiente';
         try {
-            const response = await fetch(`http://localhost:3000/api/pedidos/${id}/estado`, {
+            const response = await fetch(`/api/pedidos/${id}/estado`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ estado: nuevoEstado })
@@ -170,7 +170,7 @@ export function initAdmin() {
             const imagen_url = document.getElementById('prod-imagen').value;
 
             try {
-                const response = await fetch('http://localhost:3000/api/productos', {
+                const response = await fetch('/api/productos', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ nombre, precio, imagen_url: imagen_url || '../../assets/img/default.jpg' })
