@@ -17,7 +17,7 @@ export async function initPedidos() {
     tbody.innerHTML = '<tr><td colspan="4">Buscando tus pedidos...</td></tr>';
 
     try {
-        const response = await fetch(`http://localhost:3000/api/usuarios/${usuario.id}/pedidos`);
+        const response = await fetch(`/api/usuarios/${usuario.id}/pedidos`);
         const pedidos = await response.json();
 
         tbody.innerHTML = '';
