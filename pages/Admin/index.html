@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="stylesheet" href="../../styles/styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="logo">Tiendita - Panel Admin</h1>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="../Home/index.html">Inicio</a></li>
+            <li id="auth-link-container"></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="admin-panel" style="padding: 20px; background-color: #f4f4f4; min-height: calc(100vh - 160px);">
+    <!-- Barra de navegación secundaria -->
+    <div class="admin-nav">
+        <button id="tab-agregar" class="admin-tab active">Agregar Producto</button>
+        <button id="tab-stock" class="admin-tab">Gestionar Stock</button>
+        <button id="tab-pedidos" class="admin-tab">Ver Pedidos</button>
+    </div>
+
+    <!-- Sección: Agregar Producto (Visible por defecto) -->
+    <div id="section-agregar" class="login-container" style="min-height: auto; padding: 20px 0; background-color: transparent;">
+        <div class="login-box" style="max-width: 500px;">
+            <h2>Agregar Nuevo Producto</h2>
+            <form id="admin-form">
+                <div class="input-group">
+                    <label for="prod-nombre">Nombre del Producto</label>
+                    <input type="text" id="prod-nombre" required placeholder="Ej: Café">
+                </div>
+                <div class="input-group">
+                    <label for="prod-precio">Precio ($)</label>
+                    <input type="number" id="prod-precio" required placeholder="Ej: 5000">
+                </div>
+                <div class="input-group">
+                    <label for="prod-imagen">URL o ruta de la Imagen (opcional)</label>
+                    <input type="text" id="prod-imagen" placeholder="Ej: ../../assets/img/mi-producto.jpg">
+                </div>
+                <button type="submit" class="btn-login">Guardar Producto</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sección: Gestionar Stock (Oculto por defecto) -->
+    <div id="section-stock" class="login-container" hidden style="min-height: auto; padding: 20px 0; background-color: transparent;">
+        <div class="login-box" style="max-width: 800px; width: 100%;">
+            <h2>Stock de Productos</h2>
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Stock Actual</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="stock-tbody">
+                    <!-- La tabla se llena mediante JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Sección: Ver Pedidos (Oculto por defecto) -->
+    <div id="section-pedidos" class="login-container" hidden style="min-height: auto; padding: 20px 0; background-color: transparent;">
+        <div class="login-box" style="max-width: 900px; width: 100%;">
+            <h2>Historial de Pedidos</h2>
+            <table class="stock-table">
+                <thead>
+                    <tr>
+                        <th>ID Pedido</th>
+                        <th>Cliente</th>
+                        <th>Total</th>
+                        <th>Fecha</th>
+                        <th>¿Enviado?</th>
+                    </tr>
+                </thead>
+                <tbody id="pedidos-tbody">
+                    <!-- La tabla se llena mediante JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+<script type="module" src="../../index.js"></script>
+</body>
+</html>

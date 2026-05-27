@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Pedidos - Tiendita</title>
+    <link rel="stylesheet" href="../../styles/styles.css">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="logo">Tiendita</h1>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="../Home/index.html">Inicio</a></li>
+            <li>
+                <a href="../Cart/carrito.html" class="carrito-link">
+                    <span class="icono-carrito">🛒</span>
+                    <span>Carrito</span>
+                </a>
+            </li>
+            <li id="auth-link-container"></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="mis-pedidos-panel login-container" style="padding: 20px; background-color: #f4f4f4; min-height: calc(100vh - 160px);">
+    <div class="login-box" style="max-width: 800px; width: 100%;">
+        <h2>Historial de Mis Pedidos</h2>
+        <table class="stock-table">
+            <thead>
+                <tr>
+                    <th>ID Pedido</th>
+                    <th>Total Pagado</th>
+                    <th>Fecha de Compra</th>
+                    <th>Estado de Envío</th>
+                </tr>
+            </thead>
+            <tbody id="mis-pedidos-tbody">
+                <!-- La tabla se llena mediante JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script type="module" src="../../index.js"></script>
+</body>
+</html>

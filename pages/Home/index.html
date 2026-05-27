@@ -4,31 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tienda Online</title>
+
     <link rel="stylesheet" href="../../styles/styles.css">
+
+    <style>
+
+        /* BUSCADOR */
+        .contenedor-buscador{
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        #buscador{
+            width: 60%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* TITULOS CATEGORIAS */
+        .titulo-categoria{
+            margin-left: 20px;
+            margin-top: 40px;
+            color: #333;
+        }
+
+    </style>
 </head>
+
 <body>
 
     <!-- HEADER -->
     <header class="header">
+
         <h1 class="logo">Tiendita</h1>
+
         <nav>
             <ul class="nav-links">
-               <li><a href="../../pages/Home/index.html">Inicio</a></li>
-               <!--<li><a href="#">Ofertas</a></li>
-               <li><a href="#">Categorías</a></li>  --> 
-               <li>
-                   <a href="../../pages/Cart/carrito.html" class="carrito-link">
-                     <span class="icono-carrito">🛒</span>
-                     <span>Carrito</span>
-                  </a>
-               </li>
-               <li><a href="../../pages/login/login.html" class="login-link">
-                   <span class="icono-login">👤</span>
-                   <span>Iniciar Sesión</span>
-               </a>
-            </li>
+
+                <li><a href="../../pages/Home/index.html">Inicio</a></li>
+
+                <li><a href="#lacteos">Lácteos</a></li>
+                <li><a href="#mekato">Mekato</a></li>
+                <li><a href="#frutas">Frutas</a></li>
+                <li><a href="#bebidas">Bebidas</a></li>
+
+                <li>
+                    <a href="../../pages/Cart/carrito.html" class="carrito-link">
+                        <span class="icono-carrito">🛒</span>
+                        <span>Carrito</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../../pages/login/login.html" class="login-link">
+                        <span class="icono-login">👤</span>
+                        <span>Iniciar Sesión</span>
+                    </a>
+                </li>
+
             </ul>
         </nav>
+
     </header>
 
     <!-- BANNER -->
@@ -37,217 +76,358 @@
         <p>Encuentra los mejores productos aquí</p>
     </section>
 
-    <!-- PRODUCTOS -->
-    <section class="productos">
-        <h2>Productos</h2>
+    <!-- BUSCADOR -->
+    <div class="contenedor-buscador">
+        <input type="text" id="buscador" placeholder="Buscar productos...">
+    </div>
+
+    <!-- ========================= -->
+    <!-- LACTEOS -->
+    <!-- ========================= -->
+
+    <section class="productos" id="lacteos">
+
+        <h2 class="titulo-categoria">Lácteos</h2>
+
+        <div class="grid-productos">
+
+            <!-- PRODUCTO -->
+            <div class="producto">
+
+                <img src="../../assets/img/producto1.jpg" alt="Producto">
+
+                <h3>Leche</h3>
+
+                <p>$5.000</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+            <!-- PRODUCTO -->
+            <div class="producto">
+
+                <img src="../../assets/img/producto7.jpg" alt="Producto">
+
+                <h3>Yogurt Alpina</h3>
+
+                <p>$6.000</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- MERCADO -->
+    <!-- ========================= -->
+
+    <section class="productos" id="mercado">
+
+        <h2 class="titulo-categoria">Mercado</h2>
 
         <div class="grid-productos">
 
             <div class="producto">
-                <img src="../../assets/img/producto1.jpg" alt="Producto">
-                <h3>Leche</h3>
-                <p>$5.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
 
-            <div class="producto">
                 <img src="../../assets/img/producto2.jpg" alt="Producto">
+
                 <h3>Arroz Diana</h3>
+
                 <p>$10.000</p>
+
                 <div class="acciones-producto">
+
                     <div class="control-cantidad">
                         <button class="restar-prod">-</button>
                         <span class="cantidad-prod">1</span>
                         <button class="sumar-prod">+</button>
                     </div>
+
                     <button class="btn-agregar">Agregar</button>
+
                 </div>
+
             </div>
 
             <div class="producto">
-                <img src="../../assets/img/producto3.jpg" alt="Producto">
-                <h3>Soda</h3>
-                <p>$2.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
 
-            <div class="producto">
                 <img src="../../assets/img/producto4.jpg" alt="Producto">
+
                 <h3>Pasta</h3>
+
                 <p>$13.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
 
-            <div class="producto">
-                <img src="../../assets/img/producto5.jpg" alt="Producto">
-                <h3>Galletas</h3>
-                <p>$4.000</p>
                 <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
 
-            <div class="producto">
-                <img src="../../assets/img/producto6.jpg" alt="Producto">
-                <h3>Papas de limon</h3>
-                <p>$3.500</p>
-                <div class="acciones-producto">
                     <div class="control-cantidad">
                         <button class="restar-prod">-</button>
                         <span class="cantidad-prod">1</span>
                         <button class="sumar-prod">+</button>
                     </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
 
-            <div class="producto">
-                <img src="../../assets/img/producto7.jpg" alt="Producto">
-                <h3>Yogurt Alpina</h3>
-                <p>$6.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
                     <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
 
-            <div class="producto">
-                <img src="../../assets/img/producto8.jpg" alt="Producto">
-                <h3>Manzanas</h3>
-                <p>$3.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
                 </div>
-            </div>
 
-            <div class="producto">
-                <img src="../../assets/img/producto9.jpg" alt="Producto">
-                <h3>Del Valle</h3>
-                <p>$4.500</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
-
-            <div class="producto">
-                <img src="../../assets/img/producto10.jpg" alt="Producto">
-                <h3>Tocineta</h3>
-                <p>$9.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
-
-            <div class="producto">
-                <img src="../../assets/img/producto11.jpg" alt="Producto">
-                <h3>Doritos</h3>
-                <p>$2.800</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
-
-            <div class="producto">
-                <img src="../../assets/img/producto12.jpg" alt="Producto">
-                <h3>Bukana</h3>
-                <p>$90.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
-
-            <div class="producto">
-                <img src="../../assets/img/producto14.jpg" alt="Producto">
-                <h3>Tostadas</h3>
-                <p>$4.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
-            </div>
-
-            <div class="producto">
-                <img src="../../assets/img/producto15.jpg" alt="Producto">
-                <h3>Almendras</h3>
-                <p>$1.000</p>
-                <div class="acciones-producto">
-                    <div class="control-cantidad">
-                        <button class="restar-prod">-</button>
-                        <span class="cantidad-prod">1</span>
-                        <button class="sumar-prod">+</button>
-                    </div>
-                    <button class="btn-agregar">Agregar</button>
-                </div>
             </div>
 
         </div>
+
     </section>
 
-    
+    <!-- ========================= -->
+    <!-- MEKATO -->
+    <!-- ========================= -->
+
+    <section class="productos" id="mekato">
+
+        <h2 class="titulo-categoria">Mekato</h2>
+
+        <div class="grid-productos">
+
+            <div class="producto">
+
+                <img src="../../assets/img/producto5.jpg" alt="Producto">
+
+                <h3>Galletas</h3>
+
+                <p>$4.000</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+            <div class="producto">
+
+                <img src="../../assets/img/producto6.jpg" alt="Producto">
+
+                <h3>Papas de limón</h3>
+
+                <p>$3.500</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+            <div class="producto">
+
+                <img src="../../assets/img/producto11.jpg" alt="Producto">
+
+                <h3>Doritos</h3>
+
+                <p>$2.800</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- FRUTAS -->
+    <!-- ========================= -->
+
+    <section class="productos" id="frutas">
+
+        <h2 class="titulo-categoria">Frutas</h2>
+
+        <div class="grid-productos">
+
+            <div class="producto">
+
+                <img src="../../assets/img/producto8.jpg" alt="Producto">
+
+                <h3>Manzanas</h3>
+
+                <p>$3.000</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+            <div class="producto">
+
+                <img src="../../assets/img/producto15.jpg" alt="Producto">
+
+                <h3>Almendras</h3>
+
+                <p>$1.000</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ========================= -->
+    <!-- BEBIDAS -->
+    <!-- ========================= -->
+
+    <section class="productos" id="bebidas">
+
+        <h2 class="titulo-categoria">Bebidas</h2>
+
+        <div class="grid-productos">
+
+            <div class="producto">
+
+                <img src="../../assets/img/producto3.jpg" alt="Producto">
+
+                <h3>Soda</h3>
+
+                <p>$2.000</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+            <div class="producto">
+
+                <img src="../../assets/img/producto9.jpg" alt="Producto">
+
+                <h3>Del Valle</h3>
+
+                <p>$4.500</p>
+
+                <div class="acciones-producto">
+
+                    <div class="control-cantidad">
+                        <button class="restar-prod">-</button>
+                        <span class="cantidad-prod">1</span>
+                        <button class="sumar-prod">+</button>
+                    </div>
+
+                    <button class="btn-agregar">Agregar</button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
 
     <!-- FOOTER -->
     <footer class="footer">
         <p>© 2026 Tiendita - La mejor página web para Mercar</p>
     </footer>
-<script type="module" src="../../index.js"></script>
+
+    <!-- SCRIPT BUSCADOR -->
+    <script>
+
+        const buscador = document.getElementById("buscador");
+
+        buscador.addEventListener("keyup", () => {
+
+            const texto = buscador.value.toLowerCase();
+
+            const productos = document.querySelectorAll(".producto");
+
+            productos.forEach(producto => {
+
+                const nombre = producto.querySelector("h3").textContent.toLowerCase();
+
+                if(nombre.includes(texto)){
+                    producto.style.display = "block";
+                } else {
+                    producto.style.display = "none";
+                }
+
+            });
+
+        });
+
+    </script>
+
+    <script type="module" src="../../index.js"></script>
+
 </body>
 </html>

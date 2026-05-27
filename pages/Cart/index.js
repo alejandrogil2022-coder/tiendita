@@ -1,12 +1,22 @@
 import { getCart, saveCart, clearCart } from '../../context/cart.js';
+import { getUsuarioLogueado } from '../../context/auth.js';
 import { formatearPrecio, mostrarNotificacion } from '../../utils/helpers.js';
 
-export function initCart() {
+export async function initCart() {
     const listaCarrito = document.getElementById("lista-carrito");
     const elementoTotal = document.querySelector(".carrito h3");
     const btnCompra = document.querySelector(".btn-compra");
 
     if (!listaCarrito) return;
+
+    // Cargar los productos desde la base de datos para conocer el stock real actual
+    let productosDB = [];
+    try {
+        const response = await fetch('/api/productos');
+        productosDB = await response.json();
+    } catch (error) {
+        console.error("Error al obtener productos para validar stock:", error);
+    }
 
     function renderizarCarrito() {
         let carrito = getCart();
@@ -55,6 +65,19 @@ export function initCart() {
 
     window.cambiarCantidad = function(index, cambio) {
         let carrito = getCart();
+        
+        // Si el usuario intenta sumar, validamos contra el stock real
+        if (cambio > 0) {
+            const idProducto = carrito[index].id;
+            const productoBD = productosDB.find(p => p.id?.toString() === idProducto?.toString());
+            const stockReal = productoBD ? parseInt(productoBD.stock) || 0 : 0;
+            
+            if (carrito[index].cantidad + cambio > stockReal) {
+                mostrarNotificacion(`No puedes agregar más. Stock máximo disponible: ${stockReal}`, "#ff4d4d");
+                return;
+            }
+        }
+
         carrito[index].cantidad += cambio;
         if (carrito[index].cantidad <= 0) {
             const nombreProducto = carrito[index].nombre;
@@ -66,14 +89,48 @@ export function initCart() {
     };
 
     if (btnCompra) {
-        btnCompra.addEventListener("click", () => {
+        btnCompra.addEventListener("click", async () => {
             let carrito = getCart();
+            const usuario = getUsuarioLogueado();
+
+            // 1. Validar que el usuario haya iniciado sesión
+            if (!usuario) {
+                mostrarNotificacion("Debes iniciar sesión para poder comprar.", "#ff4d4d");
+                setTimeout(() => {
+                    window.location.href = '../../pages/login/login.html';
+                }, 2000);
+                return;
+            }
+
+            // 2. Validar que el carrito no esté vacío
             if (carrito.length === 0) {
                 mostrarNotificacion("El carrito está vacío. ¡Agrega productos antes de comprar!", "#ff4d4d");
-            } else {
-                mostrarNotificacion("¡Compra finalizada con éxito! Gracias.", "#00c853");
-                clearCart();
-                renderizarCarrito();
+                return;
+            }
+
+            // 3. Preparar los datos para enviar al backend
+            const pedido = {
+                usuario_id: usuario.id,
+                productos: carrito
+            };
+
+            // 4. Enviar la petición al servidor
+            try {
+                const response = await fetch('/api/pedidos', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(pedido)
+                });
+
+                if (response.ok) {
+                    mostrarNotificacion("¡Compra finalizada con éxito! Gracias.", "#00c853");
+                    clearCart();
+                    renderizarCarrito();
+                } else {
+                    mostrarNotificacion("Hubo un error al procesar tu pedido.", "#ff4d4d");
+                }
+            } catch (error) {
+                mostrarNotificacion("Error de conexión al procesar el pedido.", "#ff4d4d");
             }
         });
     }
