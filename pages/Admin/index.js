@@ -37,6 +37,25 @@ export function initAdmin() {
             tabAgregar.classList.remove('active');
             tabPedidos.classList.remove('active');
             cargarStock(); // Cargar la tabla al abrir la pestaña
+            const buscadorStock = document.getElementById("buscador-stock");
+if (buscadorStock) {
+    buscadorStock.addEventListener('input', (e) => {
+        const termino = e.target.value.toLowerCase();
+        // Seleccionamos todas las filas de la tabla de stock (omitiendo los encabezados)
+        const filas = document.querySelectorAll('.stock-table tbody tr');
+        
+        filas.forEach(fila => {
+            // Convierte todo el texto de la fila a minúsculas y busca el término
+            const contenidoFila = fila.innerText.toLowerCase();
+            if (contenidoFila.includes(termino)) {
+                fila.style.display = ''; // Lo deja visible
+            } else {
+                fila.style.display = 'none'; // Oculta la fila
+            }
+        });
+    });
+}
+
         });
 
         tabPedidos.addEventListener('click', () => {

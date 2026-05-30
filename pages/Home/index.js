@@ -111,6 +111,24 @@ export async function initHome() {
             gridProductos.appendChild(productoDiv);
         });
 
+        // 6. Lógica del buscador de productos en vivo
+        const buscadorInput = document.getElementById("buscador-productos");
+        if (buscadorInput) {
+            buscadorInput.addEventListener('input', (e) => {
+                const termino = e.target.value.toLowerCase();
+                const tarjetas = gridProductos.querySelectorAll('.producto');
+                
+                tarjetas.forEach(tarjeta => {
+                    const nombreProducto = tarjeta.querySelector('h3').textContent.toLowerCase();
+                    if (nombreProducto.includes(termino)) {
+                        tarjeta.style.display = ''; // Muestra el elemento si coincide
+                    } else {
+                        tarjeta.style.display = 'none'; // Oculta el elemento si no coincide
+                    }
+                });
+            });
+        }
+
     } catch (error) {
         console.error("Error al cargar productos:", error);
         gridProductos.innerHTML = '<p style="text-align: center; width: 100%; color: red;">Error al cargar los productos. Por favor, recarga la página.</p>';
